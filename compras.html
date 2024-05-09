@@ -1,0 +1,39 @@
+<section class="compras container mt-5 rounded" id="compras">
+  <h1 class="fs-4" id="seleccionados"></h1>
+  <ul class="list-group" id="items">
+
+  </ul>
+  <button class="btn btn-primary" id="pago">
+    Confirmar Pago
+  </button>
+</section>
+
+<script>
+    var obtenerNombre = (id) =>{
+        var nombreProducto = productos.filter(producto => producto.id == id);
+        return nombreProducto[0];
+    }
+    var btnPago = document.getElementById("pago");
+  var listadoSeleccionados = () => {
+    var seleccionados = document.getElementById("seleccionados");
+    if (lista_id_productos.length > 0) {
+      btnPago.style.display = 'block';
+      seleccionados.innerText = "Productos seleccionados";
+      var items = document.getElementById("items");
+      lista_id_productos.map(id => {
+          var producto = obtenerNombre(id);
+          items.innerHTML += `
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            ${producto.nombre}
+                                            <span class="badge bg-primary rounded-pill">1</span>
+                                        </li>
+                                    `;
+      })
+    } else {
+      btnPago.style.display = 'none';
+      seleccionados.innerText = "Sin elementos en el carrito de compras";
+    }
+  };
+
+  listadoSeleccionados();
+</script>

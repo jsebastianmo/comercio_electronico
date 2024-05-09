@@ -1,0 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background: #F8F9FA;
+}
+
+form{
+    width: 45%;
+    padding: 45px;
+    margin: 0px auto;
+}
+
+.user{
+    font-size: 70px;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.productos{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    background: white;
+    border: 2px solid #ddd;
+    box-shadow: 1px 1px 2px #ddd;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.compras{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    background: white;
+    border: 2px solid #ddd;
+    box-shadow: 1px 1px 2px #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.productos .producto{
+    overflow: hidden;
+    flex-grow: 1;
+    flex-shrink: 1;
+    position: relative;
+    cursor: pointer;
+}
+
+.productos .producto img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.productos .producto .overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(57, 56, 57, 0.25);
+    transition: all 300ms;
+    z-index: 99;
+}
+
+.productos .producto:hover .overlay{
+    top: 0;
+}
+
+.productos .producto .producto-añadir{
+    position: absolute;
+    top: 2%;
+    right: -100%;
+    z-index: 100;
+    transition: all 300ms ease-in-out;
+}
+
+.productos .producto:hover .producto-añadir{
+    right: 2%;
+}
+
+.productos .producto .producto-quitar{
+    display: none;
+    position: absolute;
+    top: 2%;
+    right: -100%;
+    z-index: 100;
+    transition: all 300ms ease-in-out;
+}
+
+.productos .producto:hover .producto-quitar{
+    right: 2%;
+}

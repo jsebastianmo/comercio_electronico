@@ -1,0 +1,90 @@
+<!-- listado de productos -->
+<section class="productos container mt-5 rounded" id="productos"></section>
+
+<script>
+  //Cargar contenido inicial
+  var peticion = async () => {
+    var respuesta = await fetch('https://localhost:7237/api/Producto',{
+        mode: 'no-cors'
+      });
+      console.log(respuesta.status, respuesta.ok)
+    var datos = await respuesta.json();
+    console.log(datos)
+    return datos;
+  }
+  var productos = peticion();
+  console.log(productos);
+  // var productos = [
+  //   {
+  //     id: 1,
+  //     nombre: "producto 1",
+  //     img: "1",
+  //   },
+  //   {
+  //     id: 2,
+  //     nombre: "producto 2",
+  //     img: "./img/imagen.png",
+  //   },
+  //   {
+  //     id: 3,
+  //     nombre: "producto 3",
+  //     img: "./img/imagen.png",
+  //   },
+  //   {
+  //     id: 4,
+  //     nombre: "producto 4",
+  //     img: "./img/imagen.png",
+  //   },
+  //   {
+  //     id: 5,
+  //     nombre: "producto 5",
+  //     img: "./img/imagen.png",
+  //   },
+  //   {
+  //     id: 6,
+  //     nombre: "producto 6",
+  //     img: "./img/imagen.png",
+  //   },
+  //   {
+  //     id: 7,
+  //     nombre: "producto 7",
+  //     img: "./img/imagen.png",
+  //   },
+  //   {
+  //     id: 8,
+  //     nombre: "producto 8",
+  //     img: "./img/imagen.png",
+  //   },
+  //   {
+  //     id: 9,
+  //     nombre: "producto 9",
+  //     img: "./img/imagen.png",
+  //   },
+  //   {
+  //     id: 10,
+  //     nombre: "producto 10",
+  //     img: "./img/imagen.png",
+  //   },
+  // ];
+
+  var section_productos = document.getElementById("productos");
+  var cargarProductos = (items) => {
+    //limpiar lista
+    section_productos.innerHTML = ""
+    items.map((producto) => {
+        section_productos.innerHTML += `<article class="producto rounded border border-dark" id="producto${producto.id}">
+                                                <img src=https://picsum.photos/250/250?${producto.img} alt="imagen" />
+                                                <button type="button" class="btn btn-primary producto-añadir" onclick="agregarCarrito(${producto.id})">
+                                                Añadir al carrito
+                                                </button>
+                                                <button type="button" class="btn btn-primary producto-quitar" onclick="quitarCarrito(${producto.id})">
+                                                    Quitar al carrito
+                                                </button>
+                                                <div class="overlay"></div>
+                                            </article>`;
+      });
+  };
+
+  cargarProductos(productos);
+  
+</script>
